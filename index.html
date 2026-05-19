@@ -2,496 +2,438 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokeland Legends - Tabela de Recargas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pokeland Legends - Recargas com Desconto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #FF6B35;
             --primary-dark: #E85A1F;
             --secondary: #4ECDC4;
             --accent: #FFE66D;
-            --dark: #1A1A2E;
-            --darker: #0F0F1A;
-            --card-bg: #16213E;
-            --card-border: #1E3A5F;
-            --text-light: #F0F0F0;
-            --text-muted: #A0A0B8;
+            --dark: #0D0D1A;
+            --card-bg: #16162A;
+            --card-border: #252545;
+            --text-light: #F0F0F5;
+            --text-muted: #8888AA;
             --x7game: #FF3366;
-            --official: #3399FF;
+            --x7game-light: #FF5588;
+            --success: #00E676;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--darker);
+            background: var(--dark);
             color: var(--text-light);
             min-height: 100vh;
             overflow-x: hidden;
+            padding-bottom: 100px;
         }
 
-        /* Animated background */
-        .bg-pattern {
+        /* Background */
+        .bg-animated {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: 
-                radial-gradient(ellipse at 20% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(78, 205, 196, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(255, 230, 109, 0.05) 0%, transparent 50%),
-                var(--darker);
+            background:
+                radial-gradient(ellipse at 0% 0%, rgba(255, 51, 102, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 50%, rgba(78, 205, 196, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+                var(--dark);
         }
 
-        .bg-pattern::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        /* Header */
-        .main-header {
+        /* HERO */
+        .hero {
             text-align: center;
-            padding: 50px 20px 30px;
-            position: relative;
+            padding: 35px 20px 25px;
         }
 
-        .main-header h1 {
-            font-size: 2.8rem;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 51, 102, 0.15);
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            color: var(--x7game);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.3); }
+            50% { box-shadow: 0 0 0 8px rgba(255, 51, 102, 0); }
+        }
+
+        .hero h1 {
+            font-size: 1.9rem;
             font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%);
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: none;
-            letter-spacing: -1px;
         }
 
-        .main-header .subtitle {
+        .hero p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-weight: 300;
+            line-height: 1.5;
         }
 
-        .header-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        /* COMPARISON BAR */
+        .compare-bar {
+            display: flex;
+            gap: 10px;
+            padding: 0 16px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
 
-        /* Info Cards */
-        .info-card {
+        .compare-item {
+            flex: 1;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 25px;
-            height: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .info-card .card-title {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .info-card .card-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 5px;
-        }
-
-        .info-card .card-detail {
-            font-size: 0.85rem;
-            color: var(--secondary);
-        }
-
-        .card-official::before {
-            background: linear-gradient(90deg, var(--official), #66BBFF);
-        }
-
-        .card-x7::before {
-            background: linear-gradient(90deg, var(--x7game), #FF6688);
-        }
-
-        .card-discount::before {
-            background: linear-gradient(90deg, var(--accent), var(--primary));
-        }
-
-        /* Section Title */
-        .section-title {
+            border-radius: 14px;
+            padding: 14px 10px;
             text-align: center;
-            margin: 50px 0 30px;
-            position: relative;
         }
 
-        .section-title h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            display: inline-block;
-            background: var(--darker);
-            padding: 0 25px;
-            position: relative;
-            z-index: 1;
+        .compare-item.active {
+            border-color: rgba(255, 51, 102, 0.4);
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.1), rgba(255, 51, 102, 0.02));
         }
 
-        .section-title::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--card-border), transparent);
-        }
-
-        /* Main Table */
-        .table-container {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .table {
-            margin-bottom: 0;
-            color: var(--text-light);
-        }
-
-        .table thead th {
-            background: linear-gradient(135deg, #1A2744 0%, #1E3456 100%);
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.85rem;
+        .compare-label {
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border: none;
-            padding: 18px 20px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .compare-value {
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .compare-item.active .compare-value {
+            color: var(--x7game-light);
+        }
+
+        .compare-savings {
+            display: inline-block;
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--success);
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+
+        /* FILTER TABS */
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 0 16px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .filter-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-tab {
+            flex-shrink: 0;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
             white-space: nowrap;
         }
 
-        .table tbody tr {
-            transition: background 0.2s ease;
-            border-bottom: 1px solid rgba(30, 58, 95, 0.5);
+        .filter-tab.active {
+            background: linear-gradient(135deg, var(--x7game), var(--primary));
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
         }
 
-        .table tbody tr:last-child {
-            border-bottom: none;
+        /* RECHARGE CARDS */
+        .cards-container {
+            padding: 0 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .table tbody tr:hover {
-            background: rgba(255, 255, 255, 0.03);
+        .recharge-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 18px 18px 16px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .table tbody td {
-            padding: 16px 20px;
-            border: none;
-            vertical-align: middle;
+        .recharge-card:active {
+            transform: scale(0.98);
         }
 
-        .diamond-icon {
+        .recharge-card.featured {
+            border-color: rgba(255, 51, 102, 0.4);
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.06), var(--card-bg));
+        }
+
+        .recharge-card.featured::before {
+            content: 'MAIS POPULAR';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--x7game), var(--primary));
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .diamond-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-weight: 600;
         }
 
-        .diamond-icon::before {
-            content: '💎';
-            font-size: 1.1rem;
+        .diamond-badge .icon {
+            font-size: 1.6rem;
+            filter: drop-shadow(0 2px 4px rgba(255, 51, 102, 0.3));
         }
 
-        .diamond-special {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
+        .diamond-badge .amount {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .diamond-badge .amount.small-text {
+            font-size: 0.95rem;
+        }
+
+        .card-type-badge {
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .badge-monthly {
             background: linear-gradient(135deg, #9B59B6, #8E44AD);
             color: white;
-            padding: 5px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
         }
 
         .badge-elite {
             background: linear-gradient(135deg, #F39C12, #E67E22);
             color: white;
-            padding: 5px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
         }
 
-        .price-value {
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        .price-x7 {
-            font-weight: 700;
-            color: #FF6688;
-        }
-
-        .price-official {
+        .badge-standard {
+            background: rgba(255, 255, 255, 0.08);
             color: var(--text-muted);
+        }
+
+        /* Price Compare within card */
+        .price-compare {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .price-official-block {
+            text-align: center;
+        }
+
+        .price-official-block .label {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .price-official-block .price {
+            font-size: 0.9rem;
+            color: #666680;
             text-decoration: line-through;
             text-decoration-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .savings-badge {
-            display: inline-block;
-            background: rgba(46, 204, 113, 0.15);
-            color: #2ECC71;
-            padding: 3px 10px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-top: 5px;
-        }
-
-        /* Savings Row Highlight */
-        .highlight-row {
-            background: rgba(255, 107, 53, 0.05) !important;
-        }
-
-        /* Footer */
-        .footer-note {
-            text-align: center;
-            padding: 30px 20px 50px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .footer-note .brand-highlight {
-            color: var(--x7game);
-            font-weight: 600;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .info-card {
-                margin-bottom: 20px;
-            }
-
-            .table thead th,
-            .table tbody td {
-                padding: 12px 10px;
-                font-size: 0.85rem;
-            }
-
-            .section-title h2 {
-                font-size: 1.3rem;
-            }
-
-            .cta-section {
-                padding: 25px 20px;
-                margin: 15px 0 5px;
-            }
-
-            .cta-text {
-                font-size: 1rem;
-            }
-
-            .cta-text .discount-number {
-                font-size: 1.1rem;
-            }
-
-            .cta-btn {
-                font-size: 0.95rem;
-                padding: 15px 30px;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .cta-bottom {
-                padding: 30px 20px;
-            }
-
-            .cta-bottom .cta-text {
-                font-size: 1.05rem;
-            }
-
-            .cta-bottom .cta-btn {
-                font-size: 1rem;
-                padding: 16px 35px;
-            }
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--darker);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--card-border);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, rgba(255, 51, 102, 0.12) 0%, rgba(255, 107, 53, 0.08) 50%, rgba(78, 205, 196, 0.08) 100%);
-            border: 1px solid rgba(255, 51, 102, 0.25);
-            border-radius: 20px;
-            padding: 35px 40px;
-            text-align: center;
-            margin: 20px 0 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 51, 102, 0.06) 0%, transparent 60%);
-            animation: ctaGlow 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes ctaGlow {
-            from { transform: translate(0, 0); }
-            to { transform: translate(10%, 10%); }
-        }
-
-        .cta-text {
-            font-size: 1.15rem;
             font-weight: 500;
-            color: var(--text-light);
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 1;
-            line-height: 1.6;
         }
 
-        .cta-text .highlight-text {
-            background: linear-gradient(135deg, var(--accent), var(--primary));
+        .price-arrow {
+            color: var(--x7game);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .price-x7-block {
+            flex: 1;
+            text-align: center;
+        }
+
+        .price-x7-block .label {
+            font-size: 0.6rem;
+            color: var(--x7game-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .price-x7-block .price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--x7game-light), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-weight: 700;
         }
 
-        .cta-text .discount-number {
-            color: #FF3366;
+        /* Savings bar */
+        .savings-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(90deg, rgba(0, 230, 118, 0.1), rgba(0, 230, 118, 0.02));
+            border: 1px solid rgba(0, 230, 118, 0.15);
+            border-radius: 10px;
+            padding: 8px 14px;
+        }
+
+        .savings-bar .text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--success);
+        }
+
+        .savings-bar .value {
+            font-size: 0.9rem;
             font-weight: 800;
+            color: var(--success);
+        }
+
+        .savings-bar .percent {
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: rgba(0, 230, 118, 0.2);
+            color: var(--success);
+            padding: 2px 8px;
+            border-radius: 50px;
+        }
+
+        /* CTA Sticky Bottom */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(180deg, transparent 0%, rgba(13, 13, 26, 0.95) 30%);
+            padding: 20px 16px 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-main-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--x7game) 0%, var(--primary) 50%, var(--x7game) 100%);
+            background-size: 200% 200%;
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 18px 20px;
+            border-radius: 16px;
+            border: none;
+            text-decoration: none !important;
+            box-shadow: 0 6px 25px rgba(255, 51, 102, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            animation: gradientShift 3s ease infinite, btnPulse 2.5s ease-in-out infinite;
+            transition: transform 0.2s;
+        }
+
+        .cta-main-btn:active {
+            transform: scale(0.97);
+        }
+
+        .cta-main-btn .icon {
             font-size: 1.3rem;
         }
 
-        /* CTA Button */
-        .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(135deg, #FF3366 0%, #FF6B35 50%, #FF3366 100%);
-            background-size: 200% 200%;
-            color: white !important;
-            font-size: 1.1rem;
+        .cta-main-btn .text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .cta-main-btn .main-text {
+            font-size: 1rem;
             font-weight: 700;
-            padding: 18px 45px;
-            border-radius: 60px;
-            border: none;
-            text-decoration: none !important;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 8px 30px rgba(255, 51, 102, 0.4), 0 0 60px rgba(255, 51, 102, 0.15);
-            transition: all 0.3s ease;
-            animation: ctaPulse 2.5s ease-in-out infinite, gradientShift 4s ease infinite;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 15px 45px rgba(255, 51, 102, 0.5), 0 0 80px rgba(255, 51, 102, 0.25);
+        .cta-main-btn .sub-text {
+            font-size: 0.7rem;
+            font-weight: 500;
+            opacity: 0.9;
         }
 
-        .cta-btn:active {
-            transform: translateY(-1px) scale(1.02);
-        }
-
-        .cta-btn .btn-icon {
-            font-size: 1.4rem;
-            animation: iconBounce 1.5s ease infinite;
-        }
-
-        @keyframes ctaPulse {
-            0%, 100% {
-                box-shadow: 0 8px 30px rgba(255, 51, 102, 0.4), 0 0 60px rgba(255, 51, 102, 0.15);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 8px 35px rgba(255, 51, 102, 0.55), 0 0 80px rgba(255, 51, 102, 0.25);
-                transform: scale(1.03);
-            }
+        @keyframes btnPulse {
+            0%, 100% { box-shadow: 0 6px 25px rgba(255, 51, 102, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset; }
+            50% { box-shadow: 0 8px 35px rgba(255, 51, 102, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.15) inset; }
         }
 
         @keyframes gradientShift {
@@ -500,276 +442,351 @@
             100% { background-position: 0% 50%; }
         }
 
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        /* Scroll hint */
+        .scroll-hint {
+            text-align: center;
+            padding: 8px 16px 0;
+            margin-bottom: 12px;
         }
 
-        /* Floating particles */
-        .cta-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 51, 102, 0.3);
-            border-radius: 50%;
-            animation: particleFloat 6s ease-in-out infinite;
-        }
-
-        .particle:nth-child(1) { left: 10%; top: 80%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 25%; top: 20%; animation-delay: 1s; width: 4px; height: 4px; }
-        .particle:nth-child(3) { left: 50%; top: 90%; animation-delay: 2s; width: 8px; height: 8px; }
-        .particle:nth-child(4) { left: 75%; top: 30%; animation-delay: 3s; }
-        .particle:nth-child(5) { left: 90%; top: 70%; animation-delay: 4s; width: 5px; height: 5px; }
-
-        @keyframes particleFloat {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-            50% { transform: translateY(-30px) scale(1.5); opacity: 0.6; }
-        }
-
-        /* Bottom CTA */
-        .cta-bottom {
-            margin: 30px 0 20px;
-            padding: 40px 30px;
-        }
-
-        .cta-bottom .cta-text {
-            font-size: 1.25rem;
-        }
-
-        .cta-bottom .cta-btn {
-            font-size: 1.2rem;
-            padding: 20px 55px;
-        }
-
-        /* Sparkle decoration */
-        .sparkle {
-            display: inline-block;
-            animation: sparkleAnim 2s ease-in-out infinite;
-        }
-
-        .sparkle:nth-child(2) { animation-delay: 0.3s; }
-        .sparkle:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes sparkleAnim {
-            0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
-            50% { opacity: 0.5; transform: scale(1.3) rotate(20deg); }
+        .scroll-hint span {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            opacity: 0.6;
         }
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .animate-fade-in {
-            animation: fadeInUp 0.6s ease forwards;
+        .anim-fade {
+            animation: fadeInUp 0.5s ease forwards;
         }
 
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
+        .d1 { animation-delay: 0.05s; opacity: 0; }
+        .d2 { animation-delay: 0.1s; opacity: 0; }
+        .d3 { animation-delay: 0.15s; opacity: 0; }
+        .d4 { animation-delay: 0.2s; opacity: 0; }
+        .d5 { animation-delay: 0.25s; opacity: 0; }
+        .d6 { animation-delay: 0.3s; opacity: 0; }
+
+        /* Hide scrollbar globally */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Tooltip-like info */
+        .info-text {
+            text-align: center;
+            padding: 0 16px;
+            margin: 12px 0 16px;
+        }
+
+        .info-text p {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
-    <div class="bg-pattern"></div>
+    <div class="bg-animated"></div>
 
-    <div class="container">
-        <!-- Header -->
-        <header class="main-header animate-fade-in">
-            <div class="header-badge">Comparativo de Pre&ccedil;os</div>
-            <h1>Pokeland Legends</h1>
-            <p class="subtitle">Tabela de Recargas &mdash; APK Oficial vs x7Game</p>
-        </header>
-
-        <!-- CTA Top -->
-        <div class="cta-section animate-fade-in delay-1">
-            <div class="cta-particles">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-            </div>
-            <p class="cta-text">
-                <span class="sparkle">&#10024;</span> Baixe o aplicativo <span class="highlight-text">x7Game</span> e aproveite benef&iacute;cios incr&iacute;veis de recarga com <span class="discount-number">36% de desconto</span>! <span class="sparkle">&#10024;</span>
-            </p>
-            <a href="https://m.x7game.com/?inviteFissionMid=20254748" target="_blank" rel="noopener noreferrer" class="cta-btn">
-                <span class="btn-icon">&#127918;</span> Baixar x7Game Agora
-            </a>
+    <!-- HERO -->
+    <section class="hero anim-fade d1">
+        <div class="hero-badge">
+            <span>&#9889;</span> Economia Garantida
         </div>
+        <h1>Recargas Pokeland<br>Legends</h1>
+        <p>Compare os pre&ccedil;os e economize at&eacute; <strong style="color: var(--x7game-light);">36%</strong> recarregando pelo x7Game</p>
+    </section>
 
-        <!-- Info Cards -->
-        <div class="row g-4 mb-2">
-            <div class="col-md-4 animate-fade-in delay-1">
-                <div class="info-card card-official">
-                    <div class="card-title">Taxa APK Oficial</div>
-                    <div class="card-value">1 USD = 5,01 BRL</div>
-                    <div class="card-detail">Cota&ccedil;&atilde;o direta do jogo</div>
-                </div>
-            </div>
-            <div class="col-md-4 animate-fade-in delay-2">
-                <div class="info-card card-x7">
-                    <div class="card-title">Taxa x7Game</div>
-                    <div class="card-value">1 USD = 3,22 BRL</div>
-                    <div class="card-detail">Com 40% de desconto + taxa de servi&ccedil;o</div>
-                </div>
-            </div>
-            <div class="col-md-4 animate-fade-in delay-3">
-                <div class="info-card card-discount">
-                    <div class="card-title">Economia</div>
-                    <div class="card-value">~36% OFF</div>
-                    <div class="card-detail">Economia m&eacute;dia nas recargas via x7Game</div>
-                </div>
-            </div>
+    <!-- COMPARE BAR -->
+    <div class="compare-bar anim-fade d2">
+        <div class="compare-item">
+            <div class="compare-label">APK Oficial</div>
+            <div class="compare-value">1 USD = 5,01 BRL</div>
         </div>
-
-        <!-- Section Title -->
-        <div class="section-title animate-fade-in delay-3">
-            <h2>Pacotes de Recarga</h2>
-        </div>
-
-        <!-- Main Table -->
-        <div class="table-container animate-fade-in delay-4">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Pacote</th>
-                            <th class="text-center">Diamantes</th>
-                            <th class="text-center">Valor (USD)</th>
-                            <th class="text-center">APK Oficial (BRL)</th>
-                            <th class="text-center">x7Game (BRL)</th>
-                            <th class="text-center">Economia</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="diamond-icon">Pacote Inicial</span></td>
-                            <td class="text-center fw-semibold">60</td>
-                            <td class="text-center price-value">$ 0,99</td>
-                            <td class="text-center price-official">R$ 4,96</td>
-                            <td class="text-center price-x7">R$ 3,19</td>
-                            <td class="text-center">
-                                <span class="savings-badge">- R$ 1,77</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="diamond-icon">Pacote Pequeno</span></td>
-                            <td class="text-center fw-semibold">300</td>
-                            <td class="text-center price-value">$ 4,99</td>
-                            <td class="text-center price-official">R$ 24,99</td>
-                            <td class="text-center price-x7">R$ 16,06</td>
-                            <td class="text-center">
-                                <span class="savings-badge">- R$ 8,93</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="diamond-icon">Pacote M&eacute;dio</span></td>
-                            <td class="text-center fw-semibold">980</td>
-                            <td class="text-center price-value">$ 14,99</td>
-                            <td class="text-center price-official">R$ 75,07</td>
-                            <td class="text-center price-x7">R$ 48,24</td>
-                            <td class="text-center">
-                                <span class="savings-badge">- R$ 26,83</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="diamond-icon">Pacote Grande</span></td>
-                            <td class="text-center fw-semibold">1.980</td>
-                            <td class="text-center price-value">$ 29,99</td>
-                            <td class="text-center price-official">R$ 150,19</td>
-                            <td class="text-center price-x7">R$ 96,51</td>
-                            <td class="text-center">
-                                <span class="savings-badge">- R$ 53,68</span>
-                            </td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td><span class="diamond-icon">Pacote &Eacute;pico</span></td>
-                            <td class="text-center fw-semibold">3.280</td>
-                            <td class="text-center price-value">$ 49,99</td>
-                            <td class="text-center price-official">R$ 250,35</td>
-                            <td class="text-center price-x7">R$ 160,87</td>
-                            <td class="text-center">
-                                <span class="savings-badge">- R$ 89,47</span>
-                            </td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td><span class="diamond-icon">Pacote Lend&aacute;rio</span></td>
-                            <td class="text-center fw-semibold">6.480</td>
-                            <td class="text-center price-value">$ 99,99</td>
-                            <td class="text-center price-official">R$ 500,74</td>
-                            <td class="text-center price-x7">R$ 321,78</td>
-                            <td class="text-center">
-                                <span class="savings-badge">- R$ 178,96</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="diamond-special"><span class="badge-monthly">MENSAL</span> Plano Mensal</span></td>
-                            <td class="text-center fw-semibold">&mdash;</td>
-                            <td class="text-center price-value">$ 4,99</td>
-                            <td class="text-center price-official">R$ 24,99</td>
-                            <td class="text-center price-x7">R$ 16,06</td>
-                            <td class="text-center">
-                                <span class="savings-badge">- R$ 8,93</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="diamond-special"><span class="badge-elite">ELITE</span> Plano Elite</span></td>
-                            <td class="text-center fw-semibold">&mdash;</td>
-                            <td class="text-center price-value">$ 8,99</td>
-                            <td class="text-center price-official">R$ 45,02</td>
-                            <td class="text-center price-x7">R$ 28,93</td>
-                            <td class="text-center">
-                                <span class="savings-badge">- R$ 16,09</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- CTA Bottom -->
-        <div class="cta-section cta-bottom animate-fade-in">
-            <div class="cta-particles">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-            </div>
-            <p class="cta-text">
-                <span class="sparkle">&#128293;</span> N&atilde;o perca tempo! Cadastre-se pelo meu link e comece a <span class="highlight-text">economizar agora mesmo</span> em todas as suas recargas! <span class="sparkle">&#128176;</span>
-            </p>
-            <a href="https://m.x7game.com/?inviteFissionMid=20254748" target="_blank" rel="noopener noreferrer" class="cta-btn">
-                <span class="btn-icon">&#128722;</span> Quero Economizar nas Recargas!
-            </a>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer-note">
-            <p>Valores calculados com base nas taxas de c&acirc;mbio e descontos aplicados pela <span class="brand-highlight">x7Game</span>.</p>
-            <p class="mb-0">Taxa de desconto: 40% &bull; Taxa de servi&ccedil;o: R$ 0,23 &bull; Economia real de aproximadamente 36% em todas as recargas</p>
+        <div class="compare-item active">
+            <div class="compare-label">x7Game</div>
+            <div class="compare-value">1 USD = 3,22 BRL</div>
+            <div class="compare-savings">36% OFF</div>
         </div>
     </div>
 
+    <!-- FILTER TABS -->
+    <div class="filter-tabs anim-fade d3">
+        <div class="filter-tab active" onclick="filterCards('all', this)">Todos</div>
+        <div class="filter-tab" onclick="filterCards('diamonds', this)">Diamantes</div>
+        <div class="filter-tab" onclick="filterCards('plans', this)">Planos</div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards-container" id="cardsContainer">
+
+        <!-- 60 Diamantes -->
+        <div class="recharge-card anim-fade d3" data-category="diamonds">
+            <div class="card-top">
+                <div class="diamond-badge">
+                    <span class="icon">&#128142;</span>
+                    <span class="amount">60</span>
+                </div>
+                <span class="card-type-badge badge-standard">Inicial</span>
+            </div>
+            <div class="price-compare">
+                <div class="price-official-block">
+                    <div class="label">Oficial</div>
+                    <div class="price">R$ 4,96</div>
+                </div>
+                <div class="price-arrow">&#10132;</div>
+                <div class="price-x7-block">
+                    <div class="label">x7Game</div>
+                    <div class="price">R$ 3,19</div>
+                </div>
+            </div>
+            <div class="savings-bar">
+                <span class="text">&#128176; Voc&ecirc; economiza</span>
+                <span class="value">R$ 1,77</span>
+                <span class="percent">-36%</span>
+            </div>
+        </div>
+
+        <!-- 300 Diamantes -->
+        <div class="recharge-card anim-fade d4" data-category="diamonds">
+            <div class="card-top">
+                <div class="diamond-badge">
+                    <span class="icon">&#128142;</span>
+                    <span class="amount">300</span>
+                </div>
+                <span class="card-type-badge badge-standard">Pequeno</span>
+            </div>
+            <div class="price-compare">
+                <div class="price-official-block">
+                    <div class="label">Oficial</div>
+                    <div class="price">R$ 24,99</div>
+                </div>
+                <div class="price-arrow">&#10132;</div>
+                <div class="price-x7-block">
+                    <div class="label">x7Game</div>
+                    <div class="price">R$ 16,06</div>
+                </div>
+            </div>
+            <div class="savings-bar">
+                <span class="text">&#128176; Voc&ecirc; economiza</span>
+                <span class="value">R$ 8,93</span>
+                <span class="percent">-36%</span>
+            </div>
+        </div>
+
+        <!-- 980 Diamantes -->
+        <div class="recharge-card anim-fade d4" data-category="diamonds">
+            <div class="card-top">
+                <div class="diamond-badge">
+                    <span class="icon">&#128142;</span>
+                    <span class="amount">980</span>
+                </div>
+                <span class="card-type-badge badge-standard">M&eacute;dio</span>
+            </div>
+            <div class="price-compare">
+                <div class="price-official-block">
+                    <div class="label">Oficial</div>
+                    <div class="price">R$ 75,07</div>
+                </div>
+                <div class="price-arrow">&#10132;</div>
+                <div class="price-x7-block">
+                    <div class="label">x7Game</div>
+                    <div class="price">R$ 48,24</div>
+                </div>
+            </div>
+            <div class="savings-bar">
+                <span class="text">&#128176; Voc&ecirc; economiza</span>
+                <span class="value">R$ 26,83</span>
+                <span class="percent">-36%</span>
+            </div>
+        </div>
+
+        <!-- 1980 Diamantes -->
+        <div class="recharge-card anim-fade d5" data-category="diamonds">
+            <div class="card-top">
+                <div class="diamond-badge">
+                    <span class="icon">&#128142;</span>
+                    <span class="amount">1.980</span>
+                </div>
+                <span class="card-type-badge badge-standard">Grande</span>
+            </div>
+            <div class="price-compare">
+                <div class="price-official-block">
+                    <div class="label">Oficial</div>
+                    <div class="price">R$ 150,19</div>
+                </div>
+                <div class="price-arrow">&#10132;</div>
+                <div class="price-x7-block">
+                    <div class="label">x7Game</div>
+                    <div class="price">R$ 96,51</div>
+                </div>
+            </div>
+            <div class="savings-bar">
+                <span class="text">&#128176; Voc&ecirc; economiza</span>
+                <span class="value">R$ 53,68</span>
+                <span class="percent">-36%</span>
+            </div>
+        </div>
+
+        <!-- 3280 Diamantes -->
+        <div class="recharge-card featured anim-fade d5" data-category="diamonds">
+            <div class="card-top">
+                <div class="diamond-badge">
+                    <span class="icon">&#128142;</span>
+                    <span class="amount">3.280</span>
+                </div>
+                <span class="card-type-badge badge-standard">&Eacute;pico</span>
+            </div>
+            <div class="price-compare">
+                <div class="price-official-block">
+                    <div class="label">Oficial</div>
+                    <div class="price">R$ 250,35</div>
+                </div>
+                <div class="price-arrow">&#10132;</div>
+                <div class="price-x7-block">
+                    <div class="label">x7Game</div>
+                    <div class="price">R$ 160,87</div>
+                </div>
+            </div>
+            <div class="savings-bar">
+                <span class="text">&#128176; Voc&ecirc; economiza</span>
+                <span class="value">R$ 89,47</span>
+                <span class="percent">-36%</span>
+            </div>
+        </div>
+
+        <!-- 6480 Diamantes -->
+        <div class="recharge-card featured anim-fade d6" data-category="diamonds">
+            <div class="card-top">
+                <div class="diamond-badge">
+                    <span class="icon">&#128142;</span>
+                    <span class="amount">6.480</span>
+                </div>
+                <span class="card-type-badge badge-standard">Lend&aacute;rio</span>
+            </div>
+            <div class="price-compare">
+                <div class="price-official-block">
+                    <div class="label">Oficial</div>
+                    <div class="price">R$ 500,74</div>
+                </div>
+                <div class="price-arrow">&#10132;</div>
+                <div class="price-x7-block">
+                    <div class="label">x7Game</div>
+                    <div class="price">R$ 321,78</div>
+                </div>
+            </div>
+            <div class="savings-bar">
+                <span class="text">&#128176; Voc&ecirc; economiza</span>
+                <span class="value">R$ 178,96</span>
+                <span class="percent">-36%</span>
+            </div>
+        </div>
+
+        <!-- Plano Mensal -->
+        <div class="recharge-card anim-fade d3" data-category="plans">
+            <div class="card-top">
+                <div class="diamond-badge">
+                    <span class="icon">&#128197;</span>
+                    <span class="amount small-text">Mensal</span>
+                </div>
+                <span class="card-type-badge badge-monthly">Assinatura</span>
+            </div>
+            <div class="price-compare">
+                <div class="price-official-block">
+                    <div class="label">Oficial</div>
+                    <div class="price">R$ 24,99</div>
+                </div>
+                <div class="price-arrow">&#10132;</div>
+                <div class="price-x7-block">
+                    <div class="label">x7Game</div>
+                    <div class="price">R$ 16,06</div>
+                </div>
+            </div>
+            <div class="savings-bar">
+                <span class="text">&#128176; Voc&ecirc; economiza</span>
+                <span class="value">R$ 8,93</span>
+                <span class="percent">-36%</span>
+            </div>
+        </div>
+
+        <!-- Plano Elite -->
+        <div class="recharge-card anim-fade d4" data-category="plans">
+            <div class="card-top">
+                <div class="diamond-badge">
+                    <span class="icon">&#11088;</span>
+                    <span class="amount small-text">Elite</span>
+                </div>
+                <span class="card-type-badge badge-elite">Assinatura</span>
+            </div>
+            <div class="price-compare">
+                <div class="price-official-block">
+                    <div class="label">Oficial</div>
+                    <div class="price">R$ 45,02</div>
+                </div>
+                <div class="price-arrow">&#10132;</div>
+                <div class="price-x7-block">
+                    <div class="label">x7Game</div>
+                    <div class="price">R$ 28,93</div>
+                </div>
+            </div>
+            <div class="savings-bar">
+                <span class="text">&#128176; Voc&ecirc; economiza</span>
+                <span class="value">R$ 16,09</span>
+                <span class="percent">-36%</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Info text -->
+    <div class="info-text">
+        <p>Valores convertidos com base na cota&ccedil;&atilde;o atual. O desconto de 40% j&aacute; inclui a taxa de servi&ccedil;o do x7Game. Economia real garantida em todas as recargas.</p>
+    </div>
+
+    <!-- STICKY CTA -->
+    <div class="sticky-cta">
+        <a href="https://m.x7game.com/?inviteFissionMid=20254748" target="_blank" rel="noopener noreferrer" class="cta-main-btn">
+            <span class="icon">&#127918;</span>
+            <span class="text">
+                <span class="main-text">Baixar x7Game Agora</span>
+                <span class="sub-text">Economize 36% em todas as recargas</span>
+            </span>
+            <span class="icon">&#10132;</span>
+        </a>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function filterCards(category, tabElement) {
+            // Update tabs
+            document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+            tabElement.classList.add('active');
+
+            // Filter cards
+            const cards = document.querySelectorAll('.recharge-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 200);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
